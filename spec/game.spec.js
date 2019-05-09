@@ -1,6 +1,11 @@
+var TicTacToeGame = require("../src/game");
+
 describe("Tic Tac Toe Game", () => {
-    it("should test jasmine is OK?" , () => {
-        expect(true).toEqual(true);
+
+    it("should display current Player as 'X'" , () => {
+        game = new TicTacToeGame();
+        
+        expect(game.currentPlayer).toEqual("X");
     });
 
 }); 
