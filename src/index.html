@@ -15,11 +15,18 @@
     text-align: center;
     padding: 45px;
   }
+  .hide{
+    display: none;
+  }
+  .show{
+    display: block;
+  }
   </style>
 </head>
 <body>
     <h1>Welcome to Tic - Tac - Toe Game !</h1>
     <div class = "scoreboard"><span class="playerTurn">Current Player :<span id="currentPlayer"></span> </span></div>
+    <div class="gamestatus hide"><span>Game Result : <span id="result"></span> </span></div>
     <table>
       <tr>
         <td data-index = 0 ></td>

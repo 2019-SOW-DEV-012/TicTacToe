@@ -7,6 +7,7 @@ const gameBoardHTML = `
 <body>
 <h1>Welcome to Tic - Tac - Toe Game !</h1>
     <div class = "scoreboard"><span class="playerTurn">Current Player :<span id="currentPlayer"></span> </span></div>
+    <div class="gamestatus hide"><span>Game Result : <span id="result"></span> </span></div>
     <table>
       <tr>
         <td data-index = 0 ></td>
@@ -54,6 +55,13 @@ describe("Game board view", () => {
         view.displayOwnerOnTile(currentPlayer,1);
 
         expect($("td[data-index=1]").text()).toEqual("X");
+    });
+    
+    it("should display winner on top of the board", () => {
+        let gamestatus = "X-Won"
+        view.displayGameStatus(gamestatus);
+
+        expect($("#result").text()).toEqual("X-Won");
     });
 
 });
