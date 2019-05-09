@@ -3,11 +3,39 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tic-Tac-Toe</title>
+  <style>
+    table {
+    width: 20%;
+    border-collapse: collapse;
+    background: lightyellow;
+  }
+  td {
+    width: 33.333%;
+    border: 5px solid #222;
+    text-align: center;
+    padding: 45px;
+  }
+  </style>
 </head>
 <body>
     <h1>Welcome to Tic - Tac - Toe Game !</h1>
-    <div class = "scoreboard"><span class="playerTurn">Current Player :<span id="currentPlayer"></span> </span></div>
-    <button id ="play">play</button>
+    <table>
+      <tr>
+        <td data-index = 0 ></td>
+        <td data-index = 1 ></td>
+        <td data-index = 2 ></td>
+      </tr>
+      <tr>
+        <td data-index = 3 ></td>
+        <td data-index = 4 ></td>
+        <td data-index = 5 ></td>
+      </tr>
+      <tr>
+        <td data-index = 6 ></td>
+        <td data-index = 7 ></td>
+        <td data-index = 8 ></td>
+      </tr>
+    </table>
     <script src="game.js"></script>
 </body>
 </html>

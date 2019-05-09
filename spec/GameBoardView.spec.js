@@ -7,7 +7,6 @@ const gameBoardHTML = `
 <body>
 <h1>Welcome to Tic - Tac - Toe Game !</h1>
     <div class = "scoreboard"><span class="playerTurn">Current Player :<span id="currentPlayer"></span> </span></div>
-    <button id ="play">play</button>
 </body>
 </html>
 `;
@@ -19,7 +18,7 @@ global.window = window;
 global.document = document;
 const $ = global.jQuery = require('jquery');
 const currentPlayerDom = $('#currentPlayer');
-
+const $board = $('table tr');
 var GameBoardPresenter = require("../src/js/view/GameBoardView");
 
 describe("Game board view", () => {
@@ -28,12 +27,6 @@ describe("Game board view", () => {
         view = new GameBoardPresenter();
     });
 
-
-    it("should display current player", () => {
-        view.displayPlayerTurn("X")
-
-        expect(currentPlayerDom.text()).toEqual("X");
-    });
     
 
 });

@@ -7,6 +7,7 @@ let playerInfo = new PlayerInfo();
 let gameBoardView = new GameBoardView();
 let gameBoardPresenter = new GameBoardPresenter(playerInfo, gameBoardView);
 
-$("button").click(function () {
-    gameBoardPresenter.recordPlayerMoveOnBoard(1);
+$('td').click(function (event) {
+    let playedTile = event.target.dataset.index;
+    gameBoardPresenter.recordPlayerMoveOnBoard(playedTile)
 });
