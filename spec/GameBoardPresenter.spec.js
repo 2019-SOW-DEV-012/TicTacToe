@@ -43,5 +43,26 @@ describe("Tic Tac Toe Game", () => {
 
     });
 
+    it("should declare 'X'as  winner on taking all tiles in top row  ", () => {
+        gameBoardPresenter.recordPlayerMoveOnBoard(0);
+        gameBoardPresenter.recordPlayerMoveOnBoard(5);
+        gameBoardPresenter.recordPlayerMoveOnBoard(1);
+        gameBoardPresenter.recordPlayerMoveOnBoard(4);
+        gameBoardPresenter.recordPlayerMoveOnBoard(2);
+
+        expect(gameBoardPresenter.winner).toEqual("X");
+    }); 
+    
+    it("should declare 'O' as winner on taking all tiles in top row  ", () => {
+        gameBoardPresenter.recordPlayerMoveOnBoard(5);
+        gameBoardPresenter.recordPlayerMoveOnBoard(0);
+        gameBoardPresenter.recordPlayerMoveOnBoard(4);
+        gameBoardPresenter.recordPlayerMoveOnBoard(1);
+        gameBoardPresenter.recordPlayerMoveOnBoard(6);
+        gameBoardPresenter.recordPlayerMoveOnBoard(2);
+
+        expect(gameBoardPresenter.winner).toEqual("O");
+    });
+
 
 });
