@@ -7,23 +7,26 @@ describe("Tic Tac Toe Game", () => {
 
     beforeEach(function () {
         playerInfo = {
-            currentPlayer : "X"
-          };
-         gameBoardPresenter = new GameBoardPresenter(playerInfo);
+            currentPlayer: "X"
+        };
+
+        gameBoardView = {};
+        gameBoardView.displayPlayerTurn = function () { };
+        gameBoardPresenter = new GameBoardPresenter(playerInfo, gameBoardView);
 
     });
 
-    it("should display default Player as 'X'" , () => {
+    it("should display default Player as 'X'", () => {
 
         expect(playerInfo.currentPlayer).toEqual("X");
     });
-    
-    it("should 'O' Playes after 'X' and other way around" , () => {
+
+    it("should 'O' Playes after 'X' and other way around", () => {
         let playedPosition = 1;
         gameBoardPresenter.recordPlayerMoveOnBoard(playedPosition);
 
         expect(playerInfo.currentPlayer).toEqual("O");
 
     });
-    
+
 });
