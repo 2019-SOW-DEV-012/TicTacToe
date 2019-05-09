@@ -1,4 +1,4 @@
-var GameBoardPresenter = require("../src/presenter/GameBoardPresenter");
+var GameBoardPresenter = require("../src/js/presenter/GameBoardPresenter");
 
 
 describe("Tic Tac Toe Game", () => {
