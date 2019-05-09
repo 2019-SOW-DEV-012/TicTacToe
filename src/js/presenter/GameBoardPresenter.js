@@ -4,6 +4,7 @@ function GamePresenter(playerInfo,view) {
 
   this.recordPlayerMoveOnBoard = function(playedPosition) {
     this.tiles[playedPosition] = playerInfo.currentPlayer;
+    view.displayOwnerOnTile(playerInfo.currentPlayer,playedPosition);
     playerInfo.currentPlayer = switchPlayer()
     view.displayPlayerTurn(playerInfo.currentPlayer)
   };

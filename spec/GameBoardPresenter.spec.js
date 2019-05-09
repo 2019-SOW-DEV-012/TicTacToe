@@ -10,7 +10,7 @@ describe("Tic Tac Toe Game", () => {
             currentPlayer: "X"
         };
 
-        gameBoardView = {};
+        gameBoardView = jasmine.createSpyObj('gameBoardView', ['displayOwnerOnTile']);
         gameBoardView.displayPlayerTurn = function () { };
         gameBoardPresenter = new GameBoardPresenter(playerInfo, gameBoardView);
 
@@ -42,5 +42,6 @@ describe("Tic Tac Toe Game", () => {
          X,O,X]);
 
     });
+
 
 });
