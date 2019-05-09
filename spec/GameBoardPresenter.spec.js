@@ -70,6 +70,48 @@ describe("Tic Tac Toe Game", () => {
 
         expect(gameBoardPresenter.winner).toEqual("O");
     });
+    
+    it("should declare 'X' as winner on taking all tiles in middle row  ", () => {
+        gameBoardPresenter.recordPlayerMoveOnBoard(3);
+        gameBoardPresenter.recordPlayerMoveOnBoard(0);
+        gameBoardPresenter.recordPlayerMoveOnBoard(4);
+        gameBoardPresenter.recordPlayerMoveOnBoard(1);
+        gameBoardPresenter.recordPlayerMoveOnBoard(5);
+
+        expect(gameBoardPresenter.winner).toEqual("X");
+    });
+
+    it("should declare 'O' as winner on taking all tiles in middle row  ", () => {
+        gameBoardPresenter.recordPlayerMoveOnBoard(0);
+        gameBoardPresenter.recordPlayerMoveOnBoard(5);
+        gameBoardPresenter.recordPlayerMoveOnBoard(1);
+        gameBoardPresenter.recordPlayerMoveOnBoard(4);
+        gameBoardPresenter.recordPlayerMoveOnBoard(8);
+        gameBoardPresenter.recordPlayerMoveOnBoard(3);
+
+        expect(gameBoardPresenter.winner).toEqual("O");
+    }); 
+    
+    it("should declare 'X' as winner on taking all tiles in bottom row  ", () => {
+        gameBoardPresenter.recordPlayerMoveOnBoard(6);
+        gameBoardPresenter.recordPlayerMoveOnBoard(0);
+        gameBoardPresenter.recordPlayerMoveOnBoard(7);
+        gameBoardPresenter.recordPlayerMoveOnBoard(1);
+        gameBoardPresenter.recordPlayerMoveOnBoard(8);
+
+        expect(gameBoardPresenter.winner).toEqual("X");
+    });
+
+    it("should declare 'O' as winner on taking all tiles in bottom row  ", () => {
+        gameBoardPresenter.recordPlayerMoveOnBoard(0);
+        gameBoardPresenter.recordPlayerMoveOnBoard(6);
+        gameBoardPresenter.recordPlayerMoveOnBoard(1);
+        gameBoardPresenter.recordPlayerMoveOnBoard(7);
+        gameBoardPresenter.recordPlayerMoveOnBoard(5);
+        gameBoardPresenter.recordPlayerMoveOnBoard(8);
+
+        expect(gameBoardPresenter.winner).toEqual("O");
+    });
 
 
 });

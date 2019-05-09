@@ -10,12 +10,27 @@ function GamePresenter(playerInfo,view) {
 
     addPlayedTileToBoard(playedPosition,this.tiles);
     let topRowWin = [0, 1, 2];
-    if(this.tiles[topRowWin[0]]=== this.tiles[topRowWin[1]] && this.tiles[topRowWin[0]] === this.tiles[topRowWin[2]]){
-      this.winner = this.tiles[topRowWin[0]];
-      view.displayGameStatus(this.winner);
+    let middleRowWin = [3, 4, 5];
+    let bottomRowWin = [6, 7, 8];
+    if(this.tiles[topRowWin[0]] && this.tiles[topRowWin[0]]=== this.tiles[topRowWin[1]] && this.tiles[topRowWin[0]] === this.tiles[topRowWin[2]]){
+    this.winner = this.tiles[topRowWin[0]];
+    }
+  
+    else if (this.tiles[middleRowWin[0]] && this.tiles[middleRowWin[0]]=== this.tiles[middleRowWin[1]] && this.tiles[middleRowWin[0]] === this.tiles[middleRowWin[2]]){
+      this.winner = this.tiles[middleRowWin[0]];
+    }
+    
+    else if (this.tiles[bottomRowWin[0]] && this.tiles[bottomRowWin[0]]=== this.tiles[bottomRowWin[1]] && this.tiles[bottomRowWin[0]] === this.tiles[bottomRowWin[2]]){
+      this.winner = this.tiles[bottomRowWin[0]];
     }
 
-    playerInfo.currentPlayer = switchPlayer()
+     else{
+      playerInfo.currentPlayer = switchPlayer();
+     }
+     view.displayGameStatus(this.winner);
+
+
+
   };
 
   function addPlayedTileToBoard(playedPosition,tiles){
