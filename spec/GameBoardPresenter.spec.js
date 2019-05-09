@@ -29,4 +29,18 @@ describe("Tic Tac Toe Game", () => {
 
     });
 
+    it("should update the played tiles with owner", () => {
+        for(var playedPosition = 0 ; playedPosition < 9 ; playedPosition++ ){
+            gameBoardPresenter.recordPlayerMoveOnBoard(playedPosition);
+        }
+        let X= "X";
+        let O= "O";
+
+        expect(gameBoardPresenter.tiles).toEqual([ 
+         X,O,X,
+         O,X,O,
+         X,O,X]);
+
+    });
+
 });
