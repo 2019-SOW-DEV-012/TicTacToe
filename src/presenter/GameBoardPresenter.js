@@ -1,13 +1,11 @@
-function GamePresenter() {
-  this.currentPlayer = "X";
+function GamePresenter(playerInfo) {
 
   this.recordPlayerMoveOnBoard = function(currentPlayedPosition) {
-    this.currentPlayer = this.switchPlayer()
+    playerInfo.currentPlayer = switchPlayer()
   };
 
-  this.switchPlayer = function() {
-      console.log(this.currentPlayer)
-    return this.currentPlayer === "X" ? "O" : "X";
+  function switchPlayer() {
+    return playerInfo.currentPlayer === "X" ? "O" : "X";
   }
 }
 module.exports = GamePresenter;
