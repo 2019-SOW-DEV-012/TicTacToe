@@ -2,15 +2,20 @@ var TicTacToeGame = require("../src/game");
 
 describe("Tic Tac Toe Game", () => {
 
-    it("should display current Player as 'X'" , () => {
+    beforeEach(function () {
+
         game = new TicTacToeGame();
 
+    });
+
+
+    it("should display current Player as 'X'" , () => {
+        
         expect(game.currentPlayer).toEqual("X");
     });
 
 
     it("should 'O' Playes after 'X' and other way around" , () => {
-        game = new TicTacToeGame();
         let playedPosition = 1;
         game.recordPlayerMoveOnBoard(playedPosition);
 
@@ -18,5 +23,5 @@ describe("Tic Tac Toe Game", () => {
 
     });
 
-    
+
 }); 
