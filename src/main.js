@@ -1,5 +1,16 @@
-var Game = require('./game');
+var GameBoardPresenter = require('./presenter/GameBoardPresenter');
+	
+var gameBoardPresenter = new GameBoardPresenter();
 
-var game = new Game();
+function updatePlayer(){
+    document.getElementById('currentPlayer').innerHTML = gameBoardPresenter.currentPlayer;
 
-document.getElementById('currentPlayer').innerHTML = game.currentPlayer; 
+}
+updatePlayer();
+
+document.querySelectorAll('button').forEach((position) => {
+    position.addEventListener('click', function (event) {
+        gameBoardPresenter.recordPlayerMoveOnBoard(1);
+        updatePlayer();
+    })
+});
