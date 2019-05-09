@@ -7,7 +7,7 @@ devServer: {
 	    port: 8080
 },
   entry: {
-    game: './src/main.js'
+    game: './src/js/main.js'
 },
 output: {
     filename: 'game.js'
