@@ -43,6 +43,13 @@ describe("Tic Tac Toe Game", () => {
 
     });
 
+    it("should not allow to play on already played tile", () => {
+        gameBoardPresenter.recordPlayerMoveOnBoard(0);
+        gameBoardPresenter.recordPlayerMoveOnBoard(0);
+
+        expect(gameBoardPresenter.tiles[0]).toEqual("X");
+    }); 
+     
     it("should declare 'X'as  winner on taking all tiles in top row  ", () => {
         gameBoardPresenter.recordPlayerMoveOnBoard(0);
         gameBoardPresenter.recordPlayerMoveOnBoard(5);

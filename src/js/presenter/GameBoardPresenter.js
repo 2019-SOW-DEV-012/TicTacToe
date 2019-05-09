@@ -4,6 +4,9 @@ function GamePresenter(playerInfo,view) {
   this.winner = "";
 
   this.recordPlayerMoveOnBoard = function(playedPosition) {
+    if(this.tiles[playedPosition]){
+      return
+    }
     this.tiles[playedPosition] = playerInfo.currentPlayer;
     let topRowWin = [0, 1, 2];
     if(this.tiles[topRowWin[0]]=== this.tiles[topRowWin[1]] && this.tiles[topRowWin[0]] === this.tiles[topRowWin[2]]){
