@@ -1,18 +1,17 @@
 var GameBoardPresenter = require('./presenter/GameBoardPresenter');
 var PlayerInfo = require('./model/PlayerInfo');
+var $ = require('jquery')
 
 let playerInfo = new PlayerInfo();
 let gameBoardPresenter = new GameBoardPresenter(playerInfo);
 
-function updatePlayer(){
-    document.getElementById('currentPlayer').innerHTML = playerInfo.currentPlayer;
+function updatePlayer() {
+    $("#currentPlayer").text(playerInfo.currentPlayer);
 
 }
 updatePlayer();
 
-document.querySelectorAll('button').forEach((position) => {
-    position.addEventListener('click', function (event) {
-        gameBoardPresenter.recordPlayerMoveOnBoard(1);
-        updatePlayer();
-    })
+$('button').click(function () {
+    gameBoardPresenter.recordPlayerMoveOnBoard(1);
+    updatePlayer();
 });
