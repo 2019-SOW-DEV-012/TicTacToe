@@ -9,6 +9,9 @@ KATA - Javascript.
 - [Node](https://nodejs.org/en/)
 - [npm](https://www.npmjs.com/)
 
+## Design Pattern 
+- [Model–view–presenter]
+
 ## How to run the app
 - Clone this repository
 - Install dependencies with : `$ npm install`
