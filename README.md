@@ -1,6 +1,22 @@
 # Tic-Tac-Toe
 KATA - Javascript.
 
+## Technologies Used
+- [Javascript] (https://www.javascript.com/)
+- [Jasmine](http://jasmine.github.io/)
+
+## Requirements
+- [Node](https://nodejs.org/en/)
+- [npm](https://www.npmjs.com/)
+
+## How to run the app
+- Clone this repository
+- Install dependencies with : `$ npm install`
+- To run the project: `$ npm run dev`
+- Visit: [http://localhost:8080]
+- To run unit tests: `$ npm run test`
+
+
 ## Game Rules
 
 -  X always goes first
