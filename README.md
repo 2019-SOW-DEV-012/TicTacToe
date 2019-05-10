@@ -2,7 +2,8 @@
 KATA - Javascript.
 
 ## Technologies Used
-- [Javascript] (https://www.javascript.com/)
+- [Javascript](https://www.javascript.com/)
+- [jQuery](http://jquery.com/)
 - [Jasmine](http://jasmine.github.io/)
 
 ## Requirements
@@ -10,14 +11,15 @@ KATA - Javascript.
 - [npm](https://www.npmjs.com/)
 
 ## Design Pattern 
-- [Model–view–presenter]
+- Model–view–presenter
 
 ## How to run the app
 - Clone this repository
 - Install dependencies with : `$ npm install`
 - To run the project: `$ npm run dev`
-- Visit: [http://localhost:8080]
+- Visit:[http://localhost:8080](http://localhost:8080)
 - To run unit tests: `$ npm run test`
+- To build prod version: `$ npm run build-prod`
 
 
 ## Game Rules
