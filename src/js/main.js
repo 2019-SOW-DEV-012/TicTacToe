@@ -16,3 +16,7 @@ $('td').click(function (event) {
     let playedTile = event.target.dataset.index;
     gameBoardPresenter.recordPlayerMoveOnBoard(playedTile)
 });
+
+$('button').click(function () {
+    window.location.reload();
+});
