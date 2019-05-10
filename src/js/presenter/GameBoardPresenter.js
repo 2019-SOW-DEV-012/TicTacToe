@@ -11,26 +11,33 @@ function GamePresenter(player, game, board, view) {
     if (isTileAlreadyPlayed(playedPosition) || isGameOver()) {
       return
     }
-
     addPlayedTileToBoard(playedPosition, board.tiles);
 
-    player.currentPlayer = switchPlayer();
-    view.displayPlayerTurn(player.currentPlayer)
-    if (isMinimumTilesFilledTocheckWinning()){
-    game.status = checkWinningPossibility();
-    game.status  = isGameTie() ? gameStatus.GAME_DRAW : game.status ;
-    if (game.status ) view.displayGameStatus(game.status);
-    }
-    
-    
+    updateNextPlayerToPlay();
 
-
+    if (isMinimumTilesFilledTocheckWinning())
+      updateGameStatus()
 
   };
-  function isMinimumTilesFilledTocheckWinning(){
-    return board.tiles.join("").length > 4 ; 
+
+  function updateGameStatus() {
+    game.status = checkWinningPossibility();
+    game.status = isGameTie() ? gameStatus.GAME_DRAW : game.status;
+    if (game.status) view.displayGameStatus(game.status);
   }
-  function isGameTie () {
+
+
+  function updateNextPlayerToPlay() {
+    player.currentPlayer = switchPlayer();
+    view.displayPlayerTurn(player.currentPlayer)
+
+  }
+
+  function isMinimumTilesFilledTocheckWinning() {
+    return board.tiles.join("").length > 4;
+  }
+
+  function isGameTie() {
     return board.tiles.join("").length === 9 && !game.status;
   };
 
@@ -38,8 +45,8 @@ function GamePresenter(player, game, board, view) {
     return !!game.status;
   };
 
-  function isTileAlreadyPlayed(playedPosition){
-   return board.tiles[playedPosition]
+  function isTileAlreadyPlayed(playedPosition) {
+    return board.tiles[playedPosition]
   }
 
   function addPlayedTileToBoard(playedPosition, tiles) {
