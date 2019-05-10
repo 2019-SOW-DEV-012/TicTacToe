@@ -18,10 +18,14 @@ function GamePresenter(player, game, board, view) {
     view.displayPlayerTurn(player.currentPlayer)
 
     game.status = checkWinningPossibility();
+    game.status  = isGameTie() ? gameStatus.GAME_DRAW : game.status ;
     if (game.status ) view.displayGameStatus(game.status);
 
 
 
+  };
+  function isGameTie () {
+    return board.tiles.join("").length === 9 && !game.status;
   };
 
   function isTileAlreadyPlayed(playedPosition){

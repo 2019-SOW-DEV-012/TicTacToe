@@ -252,4 +252,17 @@ describe("Tic Tac Toe Game", () => {
         });
     });
 
+    it("should declare the game is a draw if neither of the player has won", () => {
+        this.xPlayOnTile(4);
+        this.oPlayOnTile(8);
+        this.xPlayOnTile(1);
+        this.oPlayOnTile(7);
+        this.xPlayOnTile(6);
+        this.oPlayOnTile(2);
+        this.xPlayOnTile(5);
+        this.oPlayOnTile(3);
+        this.xPlayOnTile(0);
+
+        expect(game.status).toEqual(gameStatus.GAME_DRAW);
+    });
 });
