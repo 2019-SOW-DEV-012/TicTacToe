@@ -1,4 +1,6 @@
 var GameBoardPresenter = require("../src/js/presenter/GameBoardPresenter");
+var gameStatus = require("../src/js/constants/GameStatus");
+
 
 this.initView = function() {
     gameBoardView = jasmine.createSpyObj('gameBoardView', ['displayOwnerOnTile','displayGameStatus','displayPlayerTurn']);
@@ -71,7 +73,7 @@ describe("Tic Tac Toe Game", () => {
         this.oPlayOnTile(4);
         this.xPlayOnTile(2);
 
-        expect(gameBoardPresenter.winner).toEqual("X");
+        expect(gameBoardPresenter.winner).toEqual(gameStatus.X);
     }); 
     
     it("should declare 'O' as winner on taking all tiles in top row  ", () => {
@@ -82,7 +84,7 @@ describe("Tic Tac Toe Game", () => {
         this.xPlayOnTile(6);
         this.oPlayOnTile(2);
 
-        expect(gameBoardPresenter.winner).toEqual("O");
+        expect(gameBoardPresenter.winner).toEqual(gameStatus.O);
     });
     
     it("should declare 'X' as winner on taking all tiles in middle row  ", () => {
@@ -92,7 +94,7 @@ describe("Tic Tac Toe Game", () => {
         this.oPlayOnTile(1);
         this.xPlayOnTile(5);
 
-        expect(gameBoardPresenter.winner).toEqual("X");
+        expect(gameBoardPresenter.winner).toEqual(gameStatus.X);
     });
 
     it("should declare 'O' as winner on taking all tiles in middle row  ", () => {
@@ -103,7 +105,7 @@ describe("Tic Tac Toe Game", () => {
         this.xPlayOnTile(8);
         this.oPlayOnTile(3);
 
-        expect(gameBoardPresenter.winner).toEqual("O");
+        expect(gameBoardPresenter.winner).toEqual(gameStatus.O);
     }); 
     
     it("should declare 'X' as winner on taking all tiles in bottom row  ", () => {
@@ -113,7 +115,7 @@ describe("Tic Tac Toe Game", () => {
         this.oPlayOnTile(1);
         this.xPlayOnTile(8);
 
-        expect(gameBoardPresenter.winner).toEqual("X");
+        expect(gameBoardPresenter.winner).toEqual(gameStatus.X);
     });
 
     it("should declare 'O' as winner on taking all tiles in bottom row  ", () => {
@@ -124,7 +126,7 @@ describe("Tic Tac Toe Game", () => {
         this.xPlayOnTile(5);
         this.oPlayOnTile(8);
 
-        expect(gameBoardPresenter.winner).toEqual("O");
+        expect(gameBoardPresenter.winner).toEqual(gameStatus.O);
     });
 
 
