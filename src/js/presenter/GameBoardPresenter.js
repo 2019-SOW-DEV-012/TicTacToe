@@ -8,7 +8,7 @@ function GamePresenter(player, game, board, view) {
   view.displayPlayerTurn(player.currentPlayer);
 
   this.recordPlayerMoveOnBoard = function (playedPosition) {
-    if (board.tiles[playedPosition]) {
+    if (isTileAlreadyPlayed(playedPosition)) {
       return
     }
 
@@ -23,6 +23,10 @@ function GamePresenter(player, game, board, view) {
 
 
   };
+
+  function isTileAlreadyPlayed(playedPosition){
+   return board.tiles[playedPosition]
+  }
 
   function addPlayedTileToBoard(playedPosition, tiles) {
     tiles[playedPosition] = player.currentPlayer;
