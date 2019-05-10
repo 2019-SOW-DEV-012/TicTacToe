@@ -66,7 +66,7 @@ describe("Tic Tac Toe Game", () => {
         expect(gameBoardPresenter.tiles[0]).toEqual("X");
     });
 
-    describe("Tic Tac Toe Game", () => {
+    describe("Row winner", () => {
 
         it("should declare 'X'as  winner on taking all tiles in top row  ", () => {
             this.xPlayOnTile(0);
@@ -126,6 +126,72 @@ describe("Tic Tac Toe Game", () => {
             this.xPlayOnTile(1);
             this.oPlayOnTile(7);
             this.xPlayOnTile(5);
+            this.oPlayOnTile(8);
+
+            expect(gameBoardPresenter.winner).toEqual(gameStatus.O);
+        });
+    });
+    
+    describe("column winner", () => {
+
+        it("should declare 'X'as  winner on taking all tiles in left column", () => {
+            this.xPlayOnTile(0);
+            this.oPlayOnTile(5);
+            this.xPlayOnTile(3);
+            this.oPlayOnTile(4);
+            this.xPlayOnTile(6);
+
+            expect(gameBoardPresenter.winner).toEqual(gameStatus.X);
+        });
+
+        it("should declare 'O' as winner on taking all tiles in left column", () => {
+            this.xPlayOnTile(5);
+            this.oPlayOnTile(0);
+            this.xPlayOnTile(4);
+            this.oPlayOnTile(3);
+            this.xPlayOnTile(2);
+            this.oPlayOnTile(6);
+
+            expect(gameBoardPresenter.winner).toEqual(gameStatus.O);
+        });
+
+        it("should declare 'X' as winner on taking all tiles in middle column", () => {
+            this.xPlayOnTile(1);
+            this.oPlayOnTile(0);
+            this.xPlayOnTile(4);
+            this.oPlayOnTile(6);
+            this.xPlayOnTile(7);
+
+            expect(gameBoardPresenter.winner).toEqual(gameStatus.X);
+        });
+
+        it("should declare 'O' as winner on taking all tiles in middle column", () => {
+            this.xPlayOnTile(0);
+            this.oPlayOnTile(1);
+            this.xPlayOnTile(2);
+            this.oPlayOnTile(4);
+            this.xPlayOnTile(8);
+            this.oPlayOnTile(7);
+
+            expect(gameBoardPresenter.winner).toEqual(gameStatus.O);
+        });
+
+        it("should declare 'X' as winner on taking all tiles in right column", () => {
+            this.xPlayOnTile(2);
+            this.oPlayOnTile(0);
+            this.xPlayOnTile(5);
+            this.oPlayOnTile(1);
+            this.xPlayOnTile(8);
+
+            expect(gameBoardPresenter.winner).toEqual(gameStatus.X);
+        });
+
+        it("should declare 'O' as winner on taking all tiles in right column", () => {
+            this.xPlayOnTile(0);
+            this.oPlayOnTile(2);
+            this.xPlayOnTile(1);
+            this.oPlayOnTile(5);
+            this.xPlayOnTile(4);
             this.oPlayOnTile(8);
 
             expect(gameBoardPresenter.winner).toEqual(gameStatus.O);
