@@ -1,3 +1,8 @@
+var gameStatus = require("../constants/GameStatus");
+var possibleWinningPositions = require("../constants/PossibleWinningPositions");
+var players = require("../constants/Players");
+
+
 function GamePresenter(playerInfo,view) {
   view.displayPlayerTurn(playerInfo.currentPlayer);
   this.tiles = [];
@@ -9,25 +14,22 @@ function GamePresenter(playerInfo,view) {
     }
 
     addPlayedTileToBoard(playedPosition,this.tiles);
-    let topRowWin = [0, 1, 2];
-    let middleRowWin = [3, 4, 5];
-    let bottomRowWin = [6, 7, 8];
-    if(this.tiles[topRowWin[0]] && this.tiles[topRowWin[0]]=== this.tiles[topRowWin[1]] && this.tiles[topRowWin[0]] === this.tiles[topRowWin[2]]){
-    this.winner = this.tiles[topRowWin[0]];
+
+    playerInfo.currentPlayer = switchPlayer();
+    view.displayPlayerTurn(playerInfo.currentPlayer)
+
+    if(this.tiles[possibleWinningPositions.TOP_ROW_WIN[0]] && this.tiles[possibleWinningPositions.TOP_ROW_WIN[0]]=== this.tiles[possibleWinningPositions.TOP_ROW_WIN[1]] && this.tiles[possibleWinningPositions.TOP_ROW_WIN[0]] === this.tiles[possibleWinningPositions.TOP_ROW_WIN[2]]){
+    this.winner = this.tiles[possibleWinningPositions.TOP_ROW_WIN[0]];
     }
   
-    else if (this.tiles[middleRowWin[0]] && this.tiles[middleRowWin[0]]=== this.tiles[middleRowWin[1]] && this.tiles[middleRowWin[0]] === this.tiles[middleRowWin[2]]){
-      this.winner = this.tiles[middleRowWin[0]];
+    else if (this.tiles[possibleWinningPositions.MIDDLE_ROW_WIN[0]] && this.tiles[possibleWinningPositions.MIDDLE_ROW_WIN[0]]=== this.tiles[possibleWinningPositions.MIDDLE_ROW_WIN[1]] && this.tiles[possibleWinningPositions.MIDDLE_ROW_WIN[0]] === this.tiles[possibleWinningPositions.MIDDLE_ROW_WIN[2]]){
+      this.winner = this.tiles[possibleWinningPositions.MIDDLE_ROW_WIN[0]];
     }
     
-    else if (this.tiles[bottomRowWin[0]] && this.tiles[bottomRowWin[0]]=== this.tiles[bottomRowWin[1]] && this.tiles[bottomRowWin[0]] === this.tiles[bottomRowWin[2]]){
-      this.winner = this.tiles[bottomRowWin[0]];
+    else if (this.tiles[possibleWinningPositions.BOTTOM_ROW_WIN[0]] && this.tiles[possibleWinningPositions.BOTTOM_ROW_WIN[0]]=== this.tiles[possibleWinningPositions.BOTTOM_ROW_WIN[1]] && this.tiles[possibleWinningPositions.BOTTOM_ROW_WIN[0]] === this.tiles[possibleWinningPositions.BOTTOM_ROW_WIN[2]]){
+      this.winner = this.tiles[possibleWinningPositions.BOTTOM_ROW_WIN[0]];
     }
-
-     else{
-      playerInfo.currentPlayer = switchPlayer();
-     }
-     view.displayGameStatus(this.winner);
+    if (this.winner) view.displayGameStatus(gameStatus[this.winner]);
 
 
 
@@ -36,12 +38,12 @@ function GamePresenter(playerInfo,view) {
   function addPlayedTileToBoard(playedPosition,tiles){
     tiles[playedPosition] = playerInfo.currentPlayer;
     view.displayOwnerOnTile(playerInfo.currentPlayer,playedPosition);
-    view.displayPlayerTurn(playerInfo.currentPlayer)
+  //view.displayPlayerTurn(playerInfo.currentPlayer)
 
 
   }
   function switchPlayer() {
-    return playerInfo.currentPlayer === "X" ? "O" : "X";
+    return playerInfo.currentPlayer === players.PLAYER_X ? players.PLAYER_O : players.PLAYER_X;
   }
 }
 module.exports = GamePresenter;
