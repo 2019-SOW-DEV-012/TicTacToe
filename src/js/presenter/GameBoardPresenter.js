@@ -3,38 +3,38 @@ var possibleWinningPositions = require("../constants/PossibleWinningPositions");
 var players = require("../constants/Players");
 
 
-function GamePresenter(playerInfo, view) {
-  view.displayPlayerTurn(playerInfo.currentPlayer);
-  this.tiles = [];
-  this.winner = "";
+function GamePresenter(player, game, board, view) {
+
+  view.displayPlayerTurn(player.currentPlayer);
 
   this.recordPlayerMoveOnBoard = function (playedPosition) {
-    if (this.tiles[playedPosition]) {
+    if (board.tiles[playedPosition]) {
       return
     }
 
-    addPlayedTileToBoard(playedPosition, this.tiles);
+    addPlayedTileToBoard(playedPosition, board.tiles);
 
-    playerInfo.currentPlayer = switchPlayer();
-    view.displayPlayerTurn(playerInfo.currentPlayer)
+    player.currentPlayer = switchPlayer();
+    view.displayPlayerTurn(player.currentPlayer)
 
-    this.winner = checkWinningPossibility(this.tiles);
-    if (this.winner) view.displayGameStatus(this.winner);
+    game.status = checkWinningPossibility();
+    if (game.status ) view.displayGameStatus(game.status);
 
 
 
   };
 
   function addPlayedTileToBoard(playedPosition, tiles) {
-    tiles[playedPosition] = playerInfo.currentPlayer;
-    view.displayOwnerOnTile(playerInfo.currentPlayer, playedPosition);
+    tiles[playedPosition] = player.currentPlayer;
+    view.displayOwnerOnTile(player.currentPlayer, playedPosition);
 
 
   }
   function switchPlayer() {
-    return playerInfo.currentPlayer === players.PLAYER_X ? players.PLAYER_O : players.PLAYER_X;
+    return player.currentPlayer === players.PLAYER_X ? players.PLAYER_O : players.PLAYER_X;
   }
-  function checkWinningPossibility(tiles) {
+  function checkWinningPossibility() {
+    let tiles = board.tiles;
     for (let winningPosition of Object.keys(possibleWinningPositions)) {
       const [
         firstPossiblePosition,

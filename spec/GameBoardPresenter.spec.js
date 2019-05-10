@@ -12,7 +12,9 @@ this.initView = function () {
 
 describe("Tic Tac Toe Game", () => {
     let gameBoardPresenter;
-    let playerInfo;
+    let game ;
+    let board;
+    let player;
     this.initView();
 
 
@@ -25,23 +27,30 @@ describe("Tic Tac Toe Game", () => {
     };
 
     beforeEach(function () {
-        playerInfo = {
+        player = {
             currentPlayer: "X"
+        }; 
+        board = {
+            tiles: []
+        }; 
+        game = {
+            status: null
         };
 
-        gameBoardPresenter = new GameBoardPresenter(playerInfo, gameBoardView);
+
+        gameBoardPresenter = new GameBoardPresenter(player,game,board,gameBoardView);
 
     });
 
     it("should display default Player as 'X'", () => {
 
-        expect(playerInfo.currentPlayer).toEqual("X");
+        expect(player.currentPlayer).toEqual("X");
     });
 
     it("should 'O' Playes after 'X' and other way around", () => {
         this.xPlayOnTile(1);
 
-        expect(playerInfo.currentPlayer).toEqual("O");
+        expect(player.currentPlayer).toEqual("O");
 
     });
 
@@ -52,7 +61,7 @@ describe("Tic Tac Toe Game", () => {
         let X = "X";
         let O = "O";
 
-        expect(gameBoardPresenter.tiles).toEqual([
+        expect(board.tiles).toEqual([
             X, O, X,
             O, X, O,
             X, O, X]);
@@ -63,7 +72,7 @@ describe("Tic Tac Toe Game", () => {
         this.xPlayOnTile(0);
         this.xPlayOnTile(0);
 
-        expect(gameBoardPresenter.tiles[0]).toEqual("X");
+        expect(board.tiles[0]).toEqual("X");
     });
 
     describe("Row winner", () => {
@@ -75,7 +84,7 @@ describe("Tic Tac Toe Game", () => {
             this.oPlayOnTile(4);
             this.xPlayOnTile(2);
 
-            expect(gameBoardPresenter.winner).toEqual(gameStatus.X);
+            expect(game.status).toEqual(gameStatus.X);
         });
 
         it("should declare 'O' as winner on taking all tiles in top row  ", () => {
@@ -86,7 +95,7 @@ describe("Tic Tac Toe Game", () => {
             this.xPlayOnTile(6);
             this.oPlayOnTile(2);
 
-            expect(gameBoardPresenter.winner).toEqual(gameStatus.O);
+            expect(game.status).toEqual(gameStatus.O);
         });
 
         it("should declare 'X' as winner on taking all tiles in middle row  ", () => {
@@ -96,7 +105,7 @@ describe("Tic Tac Toe Game", () => {
             this.oPlayOnTile(1);
             this.xPlayOnTile(5);
 
-            expect(gameBoardPresenter.winner).toEqual(gameStatus.X);
+            expect(game.status).toEqual(gameStatus.X);
         });
 
         it("should declare 'O' as winner on taking all tiles in middle row  ", () => {
@@ -107,7 +116,7 @@ describe("Tic Tac Toe Game", () => {
             this.xPlayOnTile(8);
             this.oPlayOnTile(3);
 
-            expect(gameBoardPresenter.winner).toEqual(gameStatus.O);
+            expect(game.status).toEqual(gameStatus.O);
         });
 
         it("should declare 'X' as winner on taking all tiles in bottom row  ", () => {
@@ -117,7 +126,7 @@ describe("Tic Tac Toe Game", () => {
             this.oPlayOnTile(1);
             this.xPlayOnTile(8);
 
-            expect(gameBoardPresenter.winner).toEqual(gameStatus.X);
+            expect(game.status).toEqual(gameStatus.X);
         });
 
         it("should declare 'O' as winner on taking all tiles in bottom row  ", () => {
@@ -128,7 +137,7 @@ describe("Tic Tac Toe Game", () => {
             this.xPlayOnTile(5);
             this.oPlayOnTile(8);
 
-            expect(gameBoardPresenter.winner).toEqual(gameStatus.O);
+            expect(game.status).toEqual(gameStatus.O);
         });
     });
     
@@ -141,7 +150,7 @@ describe("Tic Tac Toe Game", () => {
             this.oPlayOnTile(4);
             this.xPlayOnTile(6);
 
-            expect(gameBoardPresenter.winner).toEqual(gameStatus.X);
+            expect(game.status).toEqual(gameStatus.X);
         });
 
         it("should declare 'O' as winner on taking all tiles in left column", () => {
@@ -152,7 +161,7 @@ describe("Tic Tac Toe Game", () => {
             this.xPlayOnTile(2);
             this.oPlayOnTile(6);
 
-            expect(gameBoardPresenter.winner).toEqual(gameStatus.O);
+            expect(game.status).toEqual(gameStatus.O);
         });
 
         it("should declare 'X' as winner on taking all tiles in middle column", () => {
@@ -162,7 +171,7 @@ describe("Tic Tac Toe Game", () => {
             this.oPlayOnTile(6);
             this.xPlayOnTile(7);
 
-            expect(gameBoardPresenter.winner).toEqual(gameStatus.X);
+            expect(game.status).toEqual(gameStatus.X);
         });
 
         it("should declare 'O' as winner on taking all tiles in middle column", () => {
@@ -173,7 +182,7 @@ describe("Tic Tac Toe Game", () => {
             this.xPlayOnTile(8);
             this.oPlayOnTile(7);
 
-            expect(gameBoardPresenter.winner).toEqual(gameStatus.O);
+            expect(game.status).toEqual(gameStatus.O);
         });
 
         it("should declare 'X' as winner on taking all tiles in right column", () => {
@@ -183,7 +192,7 @@ describe("Tic Tac Toe Game", () => {
             this.oPlayOnTile(1);
             this.xPlayOnTile(8);
 
-            expect(gameBoardPresenter.winner).toEqual(gameStatus.X);
+            expect(game.status).toEqual(gameStatus.X);
         });
 
         it("should declare 'O' as winner on taking all tiles in right column", () => {
@@ -194,7 +203,7 @@ describe("Tic Tac Toe Game", () => {
             this.xPlayOnTile(4);
             this.oPlayOnTile(8);
 
-            expect(gameBoardPresenter.winner).toEqual(gameStatus.O);
+            expect(game.status).toEqual(gameStatus.O);
         });
     });
 
