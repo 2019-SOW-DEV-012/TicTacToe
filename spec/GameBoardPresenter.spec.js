@@ -265,4 +265,15 @@ describe("Tic Tac Toe Game", () => {
 
         expect(game.status).toEqual(gameStatus.GAME_DRAW);
     });
+
+    it("should stop the game after winner", () => {
+        this.xPlayOnTile(2);
+        this.oPlayOnTile(1);
+        this.xPlayOnTile(4);
+        this.oPlayOnTile(3);
+        this.xPlayOnTile(6);
+        this.xPlayOnTile(6);
+
+        expect(board.tiles.join("").length).toEqual(5);
+    });
 });
