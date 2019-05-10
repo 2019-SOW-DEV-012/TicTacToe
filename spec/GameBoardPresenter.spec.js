@@ -64,7 +64,7 @@ describe("Tic Tac Toe Game", () => {
         expect(board.tiles).toEqual([
             X, O, X,
             O, X, O,
-            X, O, X]);
+            X]);
 
     });
 

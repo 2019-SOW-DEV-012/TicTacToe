@@ -8,7 +8,7 @@ function GamePresenter(player, game, board, view) {
   view.displayPlayerTurn(player.currentPlayer);
 
   this.recordPlayerMoveOnBoard = function (playedPosition) {
-    if (isTileAlreadyPlayed(playedPosition)) {
+    if (isTileAlreadyPlayed(playedPosition) || isGameOver()) {
       return
     }
 
@@ -26,6 +26,10 @@ function GamePresenter(player, game, board, view) {
   };
   function isGameTie () {
     return board.tiles.join("").length === 9 && !game.status;
+  };
+
+  function isGameOver() {
+    return !!game.status;
   };
 
   function isTileAlreadyPlayed(playedPosition){
