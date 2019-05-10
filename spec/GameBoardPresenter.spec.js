@@ -276,4 +276,15 @@ describe("Tic Tac Toe Game", () => {
 
         expect(board.tiles.join("").length).toEqual(5);
     });
+
+    it("should check winning possiblities only after minimum tiles filled in the board", () => {
+        this.xPlayOnTile(0);
+        this.oPlayOnTile(2);
+        this.xPlayOnTile(1);
+        this.oPlayOnTile(3);
+        this.xPlayOnTile(2);
+       
+        expect(game.status).toBe(null);
+
+    });
 });

@@ -16,14 +16,20 @@ function GamePresenter(player, game, board, view) {
 
     player.currentPlayer = switchPlayer();
     view.displayPlayerTurn(player.currentPlayer)
-
+    if (isMinimumTilesFilledTocheckWinning()){
     game.status = checkWinningPossibility();
     game.status  = isGameTie() ? gameStatus.GAME_DRAW : game.status ;
     if (game.status ) view.displayGameStatus(game.status);
+    }
+    
+    
 
 
 
   };
+  function isMinimumTilesFilledTocheckWinning(){
+    return board.tiles.join("").length > 4 ; 
+  }
   function isGameTie () {
     return board.tiles.join("").length === 9 && !game.status;
   };
