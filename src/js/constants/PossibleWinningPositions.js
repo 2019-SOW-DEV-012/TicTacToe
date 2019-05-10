@@ -4,7 +4,9 @@ Object.freeze(PossibleWinningPositions = {
     BOTTOM_ROW_WIN :[6, 7, 8],
     LEFT_COLUMN_WIN :[0, 3, 6],
     MIDDLE_COLUMN_WIN :[1, 4, 7],
-    RIGHT_COLUMN_WIN :[2, 5, 8]
+    RIGHT_COLUMN_WIN :[2, 5, 8],
+    DIAGONAL_WIN :[0, 4, 8],
+    ANTIDIAGONAL_WIN :[2, 4, 6]
   })
   module.exports = PossibleWinningPositions;
   

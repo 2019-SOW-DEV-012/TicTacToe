@@ -207,4 +207,49 @@ describe("Tic Tac Toe Game", () => {
         });
     });
 
+    describe("diagonal & anti-diagonal winner", () => {
+
+        it("should declare 'X'as  winner on taking all diagonal tiles", () => {
+            this.xPlayOnTile(0);
+            this.oPlayOnTile(5);
+            this.xPlayOnTile(4);
+            this.oPlayOnTile(6);
+            this.xPlayOnTile(8);
+
+            expect(game.status).toEqual(gameStatus.X);
+        });
+
+        it("should declare 'O' as winner on taking all diagonal tiles", () => {
+            this.xPlayOnTile(5);
+            this.oPlayOnTile(0);
+            this.xPlayOnTile(3);
+            this.oPlayOnTile(4);
+            this.xPlayOnTile(2);
+            this.oPlayOnTile(8);
+
+            expect(game.status).toEqual(gameStatus.O);
+        });
+        
+        it("should declare 'O' as winner on taking all anti - diagonal tiles", () => {
+            this.xPlayOnTile(1);
+            this.oPlayOnTile(2);
+            this.xPlayOnTile(3);
+            this.oPlayOnTile(4);
+            this.xPlayOnTile(5);
+            this.oPlayOnTile(6);
+
+            expect(game.status).toEqual(gameStatus.O);
+        });
+        
+        it("should declare 'X' as winner on taking all anti - diagonal tiles", () => {
+            this.xPlayOnTile(2);
+            this.oPlayOnTile(1);
+            this.xPlayOnTile(4);
+            this.oPlayOnTile(3);
+            this.xPlayOnTile(6);
+
+            expect(game.status).toEqual(gameStatus.X);
+        });
+    });
+
 });
